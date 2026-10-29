@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Daftar{% endblock %}
+{% block content %}
+<h1>Buat Akun</h1>
+<form method="post" novalidate>
+  {{ form.hidden_tag() }}
+  {% for field in [form.username, form.email, form.password, form.confirm] %}
+    <p>
+      {{ field.label }}<br>
+      {{ field() }}
+      {% for error in field.errors %}<br><small style="color:red">{{ error }}</small>{% endfor %}
+    </p>
+  {% endfor %}
+  {{ form.submit() }}
+</form>
+{% endblock %}
